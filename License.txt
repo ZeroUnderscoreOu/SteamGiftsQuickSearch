@@ -1,0 +1,6 @@
+This work is licensed under Mozilla Public License 2.0 with the following exceptions:
+- if you use this work or parts of it privately, you're free to keep it private;
+- if you publish another work based on this, you should mention author in credits & inform author about your publication;
+- if you use this work or parts of it for commercial purposes, you should share 5% of the profit with author unless you contact author to make another agreement.
+If you have questions about the license or would like to request to provide it under different conditions - contact author.
+In other cases use Mozilla Public License 2.0 (https://www.mozilla.org/en-US/MPL/2.0/).
