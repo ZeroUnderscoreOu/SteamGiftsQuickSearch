@@ -28,4 +28,5 @@ Note that this **script depends on spelling**. If a game's name on SG differs fr
 #### Screenshots
 
 ![Button](http://images.akamai.steamusercontent.com/ugc/270596815979589173/7BBE03DBCA2B0BDF39D350D61F0E3737717A84AF/)
+
 ![Icons](http://images.akamai.steamusercontent.com/ugc/270596815979602582/FCBB88B06B01BD1DC8CE1309A40B9C8863ADE36D/)
