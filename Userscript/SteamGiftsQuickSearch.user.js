@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        SteamGifts Quick Search
 // @author      ZeroUnderscoreOu
-// @version     1.1.0-beta
+// @version     1.1.1-beta
 // @icon        https://raw.githubusercontent.com/ZeroUnderscoreOu/SteamGiftsQuickSearch/master/Logo128.png
 // @namespace   https://github.com/ZeroUnderscoreOu/
 // @include     *://store.steampowered.com/app/*
@@ -30,7 +30,7 @@ if (document.location.pathname.includes	("/sub/")) { // adding absent block
 	AppName = document.body.getElementsByClassName("apphub_AppName")[0].textContent;
 };
 CustomStyle.sheet.insertRule(
-	"A.SGButton .ico16 {Background-Image: URL(https://raw.githubusercontent.com/ZeroUnderscoreOu/ZeroDay/master/BackgroundIcons.png);}", // "?" symbol - loading; repeating SteamDB's button styling
+	"A.SGButton .ico16 {Background-Image: URL(https://raw.githubusercontent.com/ZeroUnderscoreOu/SteamGiftsQuickSearch/master/BackgroundIcons.png);}", // "?" symbol - loading; repeating SteamDB's button styling
 	CustomStyle.sheet.cssRules.length
 );
 ButtonSG.className = "btnv6_blue_hoverfade btn_medium SGButton"; // SG button
