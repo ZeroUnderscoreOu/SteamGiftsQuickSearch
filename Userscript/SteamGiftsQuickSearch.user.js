@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        SteamGifts Quick Search
 // @author      ZeroUnderscoreOu
-// @version     1.1.1-beta
+// @version     1.2.0
 // @icon        https://raw.githubusercontent.com/ZeroUnderscoreOu/SteamGiftsQuickSearch/master/Logo128.png
 // @namespace   https://github.com/ZeroUnderscoreOu/
 // @include     *://store.steampowered.com/app/*
@@ -34,8 +34,8 @@ CustomStyle.sheet.insertRule(
 	CustomStyle.sheet.cssRules.length
 );
 ButtonSG.className = "btnv6_blue_hoverfade btn_medium SGButton"; // SG button
-ButtonSG.href = "https://www.steamgifts.com/giveaways/search?q=" + encodeURIComponent(AppName).replace(/%20/g,"+"); // webform encoding of spaces
-ButtonSG.addEventListener("mousedown",ButtonSGClick,false); // additional functionality; click event works only with LMB
+ButtonSG.href = "https://www.steamgifts.com" + document.location.pathname; // giveaways search page
+ButtonSG.addEventListener("mousedown",ButtonSGClick); // additional functionality; click event works only with LMB
 ButtonSG = ButtonSG.appendChild(document.createElement("Span"));
 ButtonSG = ButtonSG.appendChild(document.createElement("Img"));
 ButtonSG.className = "ico16";
@@ -51,7 +51,7 @@ document.body.getElementsByClassName("apphub_OtherSiteInfo")[0].insertBefore(
 var Request = new XMLHttpRequest();
 Request.open("GET","https://www.steamgifts.com/bundle-games/search?q="+encodeURIComponent(AppName).replace(/%20/g,"+"));
 Request.responseType = "document";
-Request.addEventListener("load",RequestLoad,false);
+Request.addEventListener("load",RequestLoad);
 Request.send();
 */
 GM_xmlhttpRequest({
@@ -70,10 +70,10 @@ GM_xmlhttpRequest({
 });
 
 function ButtonSGClick(Event) {
-	if (Event.button==1) {
-		this.pathname = "/bundle-games/search";
-	} else {
-		this.pathname = "/giveaways/search";
+	if (Event.button==1) { // middle click
+		this.href = this.origin + "/bundle-games/search?q=" + encodeURIComponent(AppName).replace(/%20/g,"+"); // webform encoding of spaces
+	} else { // reverting back
+		this.href = this.origin + document.location.pathname;
 	};
 };
 
@@ -113,7 +113,7 @@ function RequestLoadBundle(Data) {
 	var BundledHeading = /<p class="table__column__heading">(.*?)<\/p>/g;
 	var BundledAppName = BundledHeading.exec(Data.responseText);
 	while (BundledAppName!=null) {
-		if (BundledAppName[1]==AppName) {
+		if (BundledAppName[1].replace("&amp;","&")==AppName) {
 			ButtonSG.style["background-position"] = "-48px 0px"; // "B" symbol - bundled
 			return BundledAppName[1]; // stopping the search
 		};
